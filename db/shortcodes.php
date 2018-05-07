@@ -26,6 +26,14 @@
 defined('MOODLE_INTERNAL') || die();
 
 $shortcodes = [
+    'firstname' => [
+        'callback' => 'filter_shortcodes\shortcodes::handle',
+        'description' => 'shortcode:firstname'
+    ],
+    'fullname' => [
+        'callback' => 'filter_shortcodes\shortcodes::handle',
+        'description' => 'shortcode:fullname'
+    ],
     'off' => [
         'wraps' => true,
         'callback' => 'filter_shortcodes\shortcodes::handle',

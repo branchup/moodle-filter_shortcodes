@@ -47,8 +47,13 @@ class shortcodes {
      * @return string The new content.
      */
     public static function handle($shortcode, $args, $content, $env, $next) {
+        global $USER;
         if ($shortcode === 'off') {
             return $content;
+        } else if ($shortcode === 'firstname') {
+            return $USER->firstname;
+        } else if ($shortcode === 'fullname') {
+            return fullname($USER);
         }
         return $next($content);
     }

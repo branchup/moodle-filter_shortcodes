@@ -80,6 +80,14 @@ Built-in shortcodes
 
 Here are some shortcodes provided by this plugin:
 
+### firstname
+
+Displays the current user's first name.
+
+### fullname
+
+Displays the current user's full name.
+
 ### off (wraps content)
 
 Disables the processing of the shortcodes present between its opening and closing tag.

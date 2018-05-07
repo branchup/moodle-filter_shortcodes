@@ -31,6 +31,8 @@ $string['less'] = 'Less';
 $string['more'] = 'More';
 $string['pluginname'] = 'Shortcodes';
 $string['shortcode'] = 'Shortcode';
+$string['shortcode:firstname'] = 'The current user\'s first name.';
+$string['shortcode:fullname'] = 'The current user\'s full name.';
 $string['shortcode:off'] = 'Disables the processing of the shortcodes present between its opening and closing tag.';
 $string['shortcode:off_help'] = '
 ```
