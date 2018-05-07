@@ -17,6 +17,9 @@
 /**
  * Helpers.
  *
+ * I'd like to use namespaced functions, but that requires PHP 5.6 and we support
+ * Moodle 3.1 which is compatible with PHP 5.4.
+ *
  * @package    filter_shortcodes
  * @copyright  2018 Frédéric Massart
  * @author     Frédéric Massart <fred@branchup.tech>

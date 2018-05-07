@@ -3,6 +3,27 @@ Filter Shortcodes ![GitHub tag](https://img.shields.io/github/tag/branchup/moodl
 
 Enables users to inject content using shortcodes. The shortcodes are provided by Moodle plugins.
 
+- [Why this plugin?](#why-this-plugin)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Built-in shortcodes](#built-in-shortcodes)
+- [Compatible plugins](#compatible-plugins)
+- [End-user documentation](#end-user-documentation)
+- [How-to for developers](#how-to-for-developers)
+  - [Create a shortcode definition](#create-a-shortcode-definition)
+  - [Create the handling method](#create-the-handling-method)
+- [Developer documentation](#developer-documentation)
+  - [Shortcode attributes](#shortcode-attributes)
+  - [Shortcode definition](#shortcode-definition)
+  - [Callback arguments](#callback-arguments)
+- [Limitations](#limitations)
+  - [Backup and restore](#backup-and-restore)
+  - [Name conflicts](#name-conflicts)
+  - [Nested shortcodes](#nested-shortcodes)
+  - [Unrestricted usage](#unrestricted-usage)
+- [Ideas](#ideas)
+
 Why this plugin?
 ----------------
 
@@ -78,6 +99,15 @@ Here is a list of plugins supporting shortcodes:
 
 _Does your plugin support shortcodes? Send a pull request to add it here!_
 
+End-user documentation
+----------------------
+
+A list of all the available shortcodes as well as documentation how to use them is available to users at the URL `https://moodle.example.com/filter/shortcodes/index.php`. The latter page is accessible to all logged in users by default, but that can be tailored using the capability `filter/shortcodes:viewlist`.
+
+The page is not automatically added to the navigation to avoid being too intrusive, we rely on administrators to make this link available to the end-users in their own way.
+
+When the permission to view the list is given in another context than the system context (e.g given to teachers in courses), the URL should include the parameter `?contextid=123`, where `123` is the context to use to check the permissions.
+
 How-to for developers
 ---------------------
 
@@ -148,11 +178,40 @@ The above example is parsed as:
 
 ### Shortcode definition
 
-They are defined in `db/shortcodes.php` under the array `$shortcodes`. The keys of the array are shortcode names and their values are an array properties. The shortcode names can only contain lowercased letters and numbers (`[a-z0-9]`). Considering using a common short prefix when your shortcodes can conflict with other plugins. The available properties are:
+They are defined in `db/shortcodes.php` under the array `$shortcodes`. The keys of the array are shortcode names and their values are an array properties. The shortcode names can only contain lowercased letters and numbers (`[a-z0-9]`). Consider using a common short prefix when your shortcodes can conflict with other plugins. The available properties are:
 
 - `callback (callable)` The autoloaded class method to use.
 - `wraps (bool) [Optional]` When the shortcode wraps content, and as such has a closing tag, set this to `true`.
 - `description (string) [Optional]` The name of the language string (in your component) describing your shortcode.
+
+When you have defined a `description`, you can also define another language string of the same name followed by `_help`. The latter should contain more information about the shortcode, its attributes and how to use it. You may use the Markdown format in the help string.
+
+```php
+// db/shortcodes.php
+$shortcodes = [
+    'weather' => [
+        'callback' => 'myplugin\myclass::weather',
+        'wraps' => false,
+        'description' => 'shortcodeweather'
+    ]
+]
+```
+
+```php
+// lang/en/myplugin.php
+$string['shortcodeweather'] = 'Displays the weather forecast.';
+$string['shortcodeweather_help'] = '
+The following attributes can (or must) be used:
+
+- `city` (required) The name of the city to get the forecast for.
+- `fahrenheit` (optional) When set, the temperatures will be in Fahrenheit instead of Celcius.
+
+Example:
+
+    [weather city="Perth"]
+    [weather city="New York" fahrenheit]
+```
+
 
 ### Callback arguments
 
@@ -252,8 +311,8 @@ So, firstly the shortcode [should not include an ID](#backup-and-restore), but e
 [egg id="1" secret="AbCdEf123"]
 ```
 
-TODO
-----
+Ideas
+-----
 
 - Support for filtering shortcodes that require a logged in user.
 - Support for shortcodes to declare the context they are available in. Example, if a course is needed, the shortcode does not apply elsewhere.

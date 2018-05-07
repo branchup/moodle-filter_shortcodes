@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Language file.
+ * Permissions.
  *
  * @package    filter_shortcodes
  * @copyright  2018 Frédéric Massart
@@ -25,21 +25,15 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['description'] = 'Description';
-$string['filtername'] = 'Shortcodes';
-$string['less'] = 'Less';
-$string['more'] = 'More';
-$string['pluginname'] = 'Shortcodes';
-$string['shortcode'] = 'Shortcode';
-$string['shortcode:off'] = 'Disables the processing of the shortcodes present between its opening and closing tag.';
-$string['shortcode:off_help'] = '
-```
-[off]
-    Those tags will remain as is:
-    [onetag]
-    [thirdtag]Hello world![/thirdtag]
-[/off]
-```
-';
-$string['shortcodes:viewlist'] = 'Viewing the list of shortcodes';
-$string['shortcodeslist'] = 'List of shortcodes';
+$capabilities = [
+
+    // Whether the user can view the list of shortcodes.
+    'filter/shortcodes:viewlist' => [
+        'captype' => 'read',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => [
+            'user' => CAP_ALLOW
+        ]
+    ],
+
+];
