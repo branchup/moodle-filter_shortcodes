@@ -103,7 +103,11 @@ class filter_shortcodes_lib_helpers_testcase extends advanced_testcase {
     }
 
     /**
+     * Test parse attributes.
+     *
      * @dataProvider parse_attributes_provider
+     * @param string $attributes The attributes to parse.
+     * @param array $expected The expected result.
      */
     public function test_parse_attributes($attributes, $expected) {
         $this->assertEquals($expected, filter_shortcodes_parse_attributes($attributes));
@@ -246,13 +250,20 @@ class filter_shortcodes_lib_helpers_testcase extends advanced_testcase {
     }
 
     /**
+     * Test process text.
+     *
      * @dataProvider process_text_provider
+     * @param string $text The text to parse.
+     * @param Closure $informant The informant function.
+     * @param string $expected The expected result.
      */
     public function test_process_text($text, $informant, $expected) {
         $this->assertEquals($expected, filter_shortcodes_process_text($text, $informant));
     }
 
     /**
+     * Test definition maker.
+     *
      * @expectedException \invalid_parameter_exception
      */
     public function test_filter_shortcodes_definition_from_data_invalid_code() {
@@ -260,6 +271,8 @@ class filter_shortcodes_lib_helpers_testcase extends advanced_testcase {
     }
 
     /**
+     * Test definition maker.
+     *
      * @expectedException \invalid_parameter_exception
      */
     public function test_filter_shortcodes_definition_from_data_invalid_code_too() {
@@ -267,6 +280,8 @@ class filter_shortcodes_lib_helpers_testcase extends advanced_testcase {
     }
 
     /**
+     * Test definition maker.
+     *
      * @expectedException \coding_exception
      */
     public function test_filter_shortcodes_definition_from_data_invalid_callback() {
@@ -274,12 +289,17 @@ class filter_shortcodes_lib_helpers_testcase extends advanced_testcase {
     }
 
     /**
+     * Test definition maker.
+     *
      * @expectedException \coding_exception
      */
     public function test_filter_shortcodes_definition_from_data_missing_component() {
         filter_shortcodes_definition_from_data('abc', ['callback' => 'intval']);
     }
 
+    /**
+     * Test definition maker.
+     */
     public function test_filter_shortcodes_definition_from_data() {
         $result = filter_shortcodes_definition_from_data('abc', ['callback' => 'intval', 'component' => 'b']);
         $this->assertEquals('abc', $result->shortcode);

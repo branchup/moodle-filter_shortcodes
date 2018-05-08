@@ -90,7 +90,7 @@ function filter_shortcodes_definition_from_data($shortcode, array $data) {
  *
  * It must return the new content.
  *
- * @param array $definition The definition.
+ * @param stdClass $definition The definition.
  * @return object
  */
 function filter_shortcodes_handler_from_definition(stdClass $definition) {

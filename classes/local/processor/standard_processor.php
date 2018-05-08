@@ -50,7 +50,7 @@ class standard_processor implements processor {
     /**
      * Constructor
      *
-     * @param shortcode_registry $registry The registry.
+     * @param registry $registry The registry.
      */
     public function __construct(registry $registry) {
         $this->registry = $registry;
