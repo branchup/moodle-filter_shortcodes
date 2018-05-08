@@ -53,7 +53,7 @@ Installation
 Usage
 -----
 
-There are two types of shortcodes: the ones that wrap content, and the ones that do not. Those that do wrap content MUST have a closing tag. Here is an example using `[useremail`] which prints the current user's email, and `[toupper]` which wraps content and makes it uppercase.
+A shortcode is constituted of a word between square brackets. There are two types of shortcodes: the ones that wrap content, and the ones that do not. Those that do wrap content MUST have a closing tag. Here is an example using `[useremail`] which prints the current user's email, and `[toupper]` which wraps content and makes it uppercase.
 
 ```
 Your registered email address is: [useremail].
@@ -114,7 +114,7 @@ A list of all the available shortcodes as well as documentation how to use them 
 
 The page is not automatically added to the navigation to avoid being too intrusive, we rely on administrators to make this link available to the end-users in their own way.
 
-When the permission to view the list is given in another context than the system context (e.g given to teachers in courses), the URL should include the parameter `?contextid=123`, where `123` is the context to use to check the permissions.
+When the permission to view the list is given in another context than the system context (e.g. given to teachers in courses), the URL should include the parameter `?contextid=123`, where `123` is the context to use to check the permissions.
 
 How-to for developers
 ---------------------
@@ -218,6 +218,7 @@ Example:
 
     [weather city="Perth"]
     [weather city="New York" fahrenheit]
+';
 ```
 
 

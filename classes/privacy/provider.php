@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Language file.
+ * Provider.
  *
  * @package    filter_shortcodes
  * @copyright  2018 Frédéric Massart
@@ -23,26 +23,28 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace filter_shortcodes\privacy;
 defined('MOODLE_INTERNAL') || die();
 
-$string['description'] = 'Description';
-$string['filtername'] = 'Shortcodes';
-$string['less'] = 'Less';
-$string['more'] = 'More';
-$string['pluginname'] = 'Shortcodes';
-$string['privacy:metadata'] = 'The plugin does not store any user information.';
-$string['shortcode'] = 'Shortcode';
-$string['shortcode:firstname'] = 'The current user\'s first name.';
-$string['shortcode:fullname'] = 'The current user\'s full name.';
-$string['shortcode:off'] = 'Disables the processing of the shortcodes present between its opening and closing tag.';
-$string['shortcode:off_help'] = '
-```
-[off]
-    Those tags will remain as is:
-    [onetag]
-    [thirdtag]Hello world![/thirdtag]
-[/off]
-```
-';
-$string['shortcodes:viewlist'] = 'Viewing the list of shortcodes';
-$string['shortcodeslist'] = 'List of shortcodes';
+/**
+ * Provider.
+ *
+ * @package    filter_shortcodes
+ * @copyright  2018 Frédéric Massart
+ * @author     Frédéric Massart <fred@branchup.tech>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    use \core_privacy\local\legacy_polyfill;
+
+    /**
+     * Get the reason.
+     *
+     * @return string
+     */
+    public static function _get_reason() {
+        return 'privacy:metadata';
+    }
+
+}
