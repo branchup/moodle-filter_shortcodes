@@ -46,9 +46,12 @@ Moodle 3.1 or greater.
 Installation
 ------------
 
-1. Extract the content of this repository in `filter/shortcodes`
-2. Navigate to Site administration > Notifications
-3. Follow the prompt to upgrade your Moodle site
+_Until the plugin is approved on the plugin's directory on moodle.org, please install the plugin manually._
+
+1. Download the _zip_ of the [latest release](https://github.com/branchup/moodle-filter_shortcodes/releases)
+2. Extract the content in `filter/shortcodes`
+3. Navigate to Site administration > Notifications
+4. Follow the prompt to upgrade your Moodle site
 
 Usage
 -----
@@ -104,6 +107,7 @@ Compatible plugins
 Here is a list of plugins supporting shortcodes:
 
 - [Level up!](https://moodle.org/plugins/block_xp)
+- [Stash](https://moodle.org/plugins/block_stash)
 
 _Does your plugin support shortcodes? Send a pull request to add it here!_
 
