@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.0.2
+------
+
+- Include missing language string for cache definition
+
 v1.0.1
 ------
 
