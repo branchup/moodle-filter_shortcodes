@@ -25,6 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['cachedef_handlers'] = 'Shortcodes handlers';
 $string['description'] = 'Description';
 $string['filtername'] = 'Shortcodes';
 $string['less'] = 'Less';
