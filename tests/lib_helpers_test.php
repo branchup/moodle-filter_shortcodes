@@ -263,37 +263,37 @@ class filter_shortcodes_lib_helpers_testcase extends advanced_testcase {
 
     /**
      * Test definition maker.
-     *
-     * @expectedException \invalid_parameter_exception
      */
     public function test_filter_shortcodes_definition_from_data_invalid_code() {
+        $this->expectException('invalid_parameter_exception');
+        $this->expectExceptionMessage('Invalid parameter value detected');
         filter_shortcodes_definition_from_data('abc:d', []);
     }
 
     /**
      * Test definition maker.
-     *
-     * @expectedException \invalid_parameter_exception
      */
     public function test_filter_shortcodes_definition_from_data_invalid_code_too() {
+        $this->expectException('invalid_parameter_exception');
+        $this->expectExceptionMessage('Invalid parameter value detected');
         filter_shortcodes_definition_from_data('ab_c', []);
     }
 
     /**
      * Test definition maker.
-     *
-     * @expectedException \coding_exception
      */
     public function test_filter_shortcodes_definition_from_data_invalid_callback() {
+        $this->expectException('coding_exception');
+        $this->expectExceptionMessage("The callback for shortcode 'abc' is invalid.");
         filter_shortcodes_definition_from_data('abc', ['callback' => 'donot::exist']);
     }
 
     /**
      * Test definition maker.
-     *
-     * @expectedException \coding_exception
      */
     public function test_filter_shortcodes_definition_from_data_missing_component() {
+        $this->expectException('coding_exception');
+        $this->expectExceptionMessage("A shortcode must belong to a component.");
         filter_shortcodes_definition_from_data('abc', ['callback' => 'intval']);
     }
 
