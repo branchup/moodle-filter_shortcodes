@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.0.3
+------
+
+- Exception assertion in tests updated for latest PHP Unit
+
 v1.0.2
 ------
 
