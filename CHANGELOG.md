@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.0.4
+------
+
+- Filter is no longer automatically enabled in unit tests
+
 v1.0.3
 ------
 
