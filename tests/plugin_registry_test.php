@@ -40,6 +40,9 @@ global $CFG;
 class filter_shortcodes_plugin_registry_testcase extends advanced_testcase {
 
     public function test_get_definitions() {
+        $this->resetAfterTest();
+        filter_set_global_state('shortcodes', TEXTFILTER_ON);
+
         $registry = new plugin_registry();
         $defs = iterator_to_array($registry->get_definitions(), false);
 
@@ -52,6 +55,9 @@ class filter_shortcodes_plugin_registry_testcase extends advanced_testcase {
     }
 
     public function test_get_handler() {
+        $this->resetAfterTest();
+        filter_set_global_state('shortcodes', TEXTFILTER_ON);
+
         $registry = new plugin_registry();
         $handler = $registry->get_handler('off');
         $this->assertTrue($handler->wraps);

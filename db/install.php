@@ -27,11 +27,11 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Filter install function.
- *
- * @return true
  */
 function xmldb_filter_shortcodes_install() {
 
-    // Enable the filter by default.
-    filter_set_global_state('shortcodes', TEXTFILTER_ON);
+    if (!defined('PHPUNIT_TEST') || !PHPUNIT_TEST) {
+        // Enable the filter by default.
+        filter_set_global_state('shortcodes', TEXTFILTER_ON);
+    }
 }
