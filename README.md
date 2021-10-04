@@ -1,4 +1,4 @@
-Filter Shortcodes ![GitHub tag](https://img.shields.io/github/tag/branchup/moodle-filter_shortcodes.svg) ![Travis branch](https://img.shields.io/travis/branchup/moodle-filter_shortcodes/master.svg)
+Filter Shortcodes ![GitHub tag](https://img.shields.io/github/tag/branchup/moodle-filter_shortcodes.svg) ![Build Status](https://github.com/branchup/moodle-filter_shortcodes/actions/workflows/39-master.yml/badge.svg?branch=master)
 =================
 
 Enables users to inject content using shortcodes. The shortcodes are provided by Moodle plugins.
