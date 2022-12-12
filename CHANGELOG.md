@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.0.5
+------
+
+- Built-in `[firstname]` shortcode escapes firstname
+
 v1.0.4
 ------
 
