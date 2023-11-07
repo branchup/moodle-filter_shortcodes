@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.0.6
+------
+
+- Minor coding style updates
+
 v1.0.5
 ------
 
