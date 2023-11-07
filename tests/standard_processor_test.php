@@ -23,8 +23,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace filter_shortcodes;
 defined('MOODLE_INTERNAL') || die();
 
+use context_system;
+use core_text;
 use filter_shortcodes\local\registry\static_registry;
 use filter_shortcodes\local\processor\standard_processor;
 
@@ -39,19 +42,24 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @author     Frédéric Massart <fred@branchup.tech>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class filter_shortcodes_standard_processor_testcase extends advanced_testcase {
+class standard_processor_test extends \advanced_testcase {
 
+    /**
+     * Process.
+     *
+     * @covers \filter_shortcodes\local\processor\standard_processor::process
+     */
     public function test_process() {
         $this->resetAfterTest();
         $dg = $this->getDataGenerator();
         $u1 = $dg->create_user(['firstname' => 'François', 'lastname' => 'O\'Brian']);
         $registry = new static_registry([
             filter_shortcodes_definition_from_data('decorate', ['component' => 'core_test',
-                'callback' => 'filter_shortcodes_standard_processor_decorate', 'wraps' => true]),
+                'callback' => 'filter_shortcodes\filter_shortcodes_standard_processor_decorate', 'wraps' => true, ]),
             filter_shortcodes_definition_from_data('fullname', ['component' => 'core_test',
-                'callback' => 'filter_shortcodes_standard_processor_fullname']),
+                'callback' => 'filter_shortcodes\filter_shortcodes_standard_processor_fullname', ]),
             filter_shortcodes_definition_from_data('uppercase', ['component' => 'core_test',
-                'callback' => 'filter_shortcodes_standard_processor_uppercase', 'wraps' => true]),
+                'callback' => 'filter_shortcodes\filter_shortcodes_standard_processor_uppercase', 'wraps' => true, ]),
         ]);
         $processor = new standard_processor($registry);
         $env = filter_shortcodes_make_env(context_system::instance());

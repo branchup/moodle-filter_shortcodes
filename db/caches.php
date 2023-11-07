@@ -29,6 +29,6 @@ $definitions = [
     'handlers' => [
         'mode' => cache_store::MODE_APPLICATION,
         'simplekeys' => true,
-        'staticacceleration' => true
+        'staticacceleration' => true,
     ],
 ];

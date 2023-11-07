@@ -26,7 +26,6 @@
 namespace filter_shortcodes\local\processor;
 defined('MOODLE_INTERNAL') || die();
 
-use core_text;
 use stdClass;
 use filter_shortcodes\local\registry\registry;
 
@@ -75,7 +74,7 @@ class standard_processor implements processor {
                 'contentprocessor' => function($args, $content) use ($processor, $shortcode, $next) {
                     // We decorate the handler method to pass through the other needed arguments.
                     return $processor($shortcode, $args, $content, $this->env, $next);
-                }
+                },
             ];
         });
     }
@@ -88,7 +87,7 @@ class standard_processor implements processor {
      */
     public function process($text) {
         if ($this->env === null) {
-            throw new coding_exception('The environment must be set between process calls.');
+            throw new \coding_exception('The environment must be set between process calls.');
         }
 
         $env = $this->env;

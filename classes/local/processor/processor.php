@@ -24,9 +24,6 @@
  */
 
 namespace filter_shortcodes\local\processor;
-defined('MOODLE_INTERNAL') || die();
-
-use stdClass;
 
 /**
  * Processor interface.

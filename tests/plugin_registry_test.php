@@ -23,8 +23,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace filter_shortcodes;
 defined('MOODLE_INTERNAL') || die();
 
+use context_system;
 use filter_shortcodes\local\registry\plugin_registry;
 
 global $CFG;
@@ -37,8 +39,13 @@ global $CFG;
  * @author     Frédéric Massart <fred@branchup.tech>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class filter_shortcodes_plugin_registry_testcase extends advanced_testcase {
+class plugin_registry_test extends \advanced_testcase {
 
+    /**
+     * Get definitions.
+     *
+     * @covers \filter_shortcodes\local\registry\plugin_registry::get_definitions
+     */
     public function test_get_definitions() {
         $this->resetAfterTest();
         filter_set_global_state('shortcodes', TEXTFILTER_ON);
@@ -54,6 +61,11 @@ class filter_shortcodes_plugin_registry_testcase extends advanced_testcase {
         }));
     }
 
+    /**
+     * Get handler.
+     *
+     * @covers \filter_shortcodes\local\registry\plugin_registry::get_handler
+     */
     public function test_get_handler() {
         $this->resetAfterTest();
         filter_set_global_state('shortcodes', TEXTFILTER_ON);

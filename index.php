@@ -100,7 +100,7 @@ foreach ($registry->get_definitions() as $def) {
                     'href' => '#',
                     'class' => 'shortcode-show-more',
                     'aria-expanded' => 'false',
-                    'aria-controls' => "#{$id}"
+                    'aria-controls' => "#{$id}",
                 ]) .
                 html_writer::div($help, '', [
                     'id' => $id,
@@ -112,7 +112,7 @@ foreach ($registry->get_definitions() as $def) {
     $table->add_data([
         $def->shortcode,
         $description,
-        $def->component
+        $def->component,
     ]);
 }
 

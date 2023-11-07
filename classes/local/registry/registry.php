@@ -24,7 +24,6 @@
  */
 
 namespace filter_shortcodes\local\registry;
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Registry interface.

@@ -24,7 +24,6 @@
  */
 
 namespace filter_shortcodes;
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Shortcodes handler.

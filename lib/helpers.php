@@ -26,8 +26,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Create a definition from data.
  *
@@ -99,7 +97,7 @@ function filter_shortcodes_handler_from_definition(stdClass $definition) {
         'wraps' => $definition->wraps,
         'processor' => function($shortcode, $args, $content, $env, $next) use ($callback) {
             return call_user_func($callback, $shortcode, $args, $content, $env, $next);
-        }
+        },
     ];
 }
 
@@ -114,7 +112,7 @@ function filter_shortcodes_make_env(context $context, array $options = []) {
     return (object) array_merge([
         'context' => $context,
         'noclean' => false,
-        'originalformat' => FORMAT_PLAIN
+        'originalformat' => FORMAT_PLAIN,
     ], $options);
 }
 

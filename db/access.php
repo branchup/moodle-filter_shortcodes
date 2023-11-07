@@ -32,8 +32,8 @@ $capabilities = [
         'captype' => 'read',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => [
-            'user' => CAP_ALLOW
-        ]
+            'user' => CAP_ALLOW,
+        ],
     ],
 
 ];

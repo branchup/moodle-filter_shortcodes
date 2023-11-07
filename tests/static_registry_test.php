@@ -23,6 +23,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace filter_shortcodes;
 defined('MOODLE_INTERNAL') || die();
 
 use filter_shortcodes\local\registry\static_registry;
@@ -39,8 +40,13 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @author     Frédéric Massart <fred@branchup.tech>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class filter_shortcodes_static_registry_testcase extends advanced_testcase {
+class static_registry_test extends \advanced_testcase {
 
+    /**
+     * Get definitions.
+     *
+     * @covers \filter_shortcodes\local\registry\static_registry::get_definitions
+     */
     public function test_get_definitions() {
         $registry = new static_registry([
             filter_shortcodes_definition_from_data('abc', ['component' => 'core', 'callback' => 'intval']),
@@ -61,19 +67,24 @@ class filter_shortcodes_static_registry_testcase extends advanced_testcase {
         $this->assertEquals('next', $defs[3]->callback);
     }
 
+    /**
+     * Get handler.
+     *
+     * @covers \filter_shortcodes\local\registry\static_registry::get_handler
+     */
     public function test_get_handler() {
         $noop = function($text) {
             return $text;
         };
         $registry = new static_registry([
             filter_shortcodes_definition_from_data('abc', ['component' => 'core',
-                'callback' => 'filter_shortcodes_fixture_return_two', 'wraps' => true]),
+                'callback' => 'filter_shortcodes\filter_shortcodes_fixture_return_two', 'wraps' => true, ]),
             filter_shortcodes_definition_from_data('def', ['component' => 'filter_shortcodes',
-                'callback' => 'filter_shortcodes_fixture_return_two']),
+                'callback' => 'filter_shortcodes\filter_shortcodes_fixture_return_two', ]),
             filter_shortcodes_definition_from_data('def', ['component' => 'core_course',
-                'callback' => 'filter_shortcodes_fixture_return_one', 'wraps' => true]),
+                'callback' => 'filter_shortcodes\filter_shortcodes_fixture_return_one', 'wraps' => true, ]),
             filter_shortcodes_definition_from_data('ghi', ['component' => 'core_course',
-                'callback' => 'filter_shortcodes_fixture_return_one']),
+                'callback' => 'filter_shortcodes\filter_shortcodes_fixture_return_one', ]),
         ]);
 
         // Not handled.

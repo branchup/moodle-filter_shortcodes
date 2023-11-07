@@ -24,7 +24,6 @@
  */
 
 namespace filter_shortcodes\privacy;
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Provider.
@@ -43,7 +42,7 @@ class provider implements \core_privacy\local\metadata\null_provider {
      *
      * @return string
      */
-    public static function _get_reason() {
+    public static function _get_reason() { // @codingStandardsIgnoreLine
         return 'privacy:metadata';
     }
 
