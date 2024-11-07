@@ -40,14 +40,14 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @author     Frédéric Massart <fred@branchup.tech>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class static_registry_test extends \advanced_testcase {
+final class static_registry_test extends \advanced_testcase {
 
     /**
      * Get definitions.
      *
      * @covers \filter_shortcodes\local\registry\static_registry::get_definitions
      */
-    public function test_get_definitions() {
+    public function test_get_definitions(): void {
         $registry = new static_registry([
             filter_shortcodes_definition_from_data('abc', ['component' => 'core', 'callback' => 'intval']),
             filter_shortcodes_definition_from_data('def', ['component' => 'filter_shortcodes', 'callback' => 'strlen']),
@@ -72,7 +72,7 @@ class static_registry_test extends \advanced_testcase {
      *
      * @covers \filter_shortcodes\local\registry\static_registry::get_handler
      */
-    public function test_get_handler() {
+    public function test_get_handler(): void {
         $noop = function($text) {
             return $text;
         };

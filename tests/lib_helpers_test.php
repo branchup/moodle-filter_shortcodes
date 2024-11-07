@@ -37,7 +37,7 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @author     Frédéric Massart <fred@branchup.tech>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class lib_helpers_test extends \advanced_testcase {
+final class lib_helpers_test extends \advanced_testcase {
 
     /**
      * Parse attributes data provider.
@@ -111,7 +111,7 @@ class lib_helpers_test extends \advanced_testcase {
      * @param array $expected The expected result.
      * @covers \filter_shortcodes_parse_attributes
      */
-    public function test_parse_attributes($attributes, $expected) {
+    public function test_parse_attributes($attributes, $expected): void {
         $this->assertEquals($expected, filter_shortcodes_parse_attributes($attributes));
     }
 
@@ -260,7 +260,7 @@ class lib_helpers_test extends \advanced_testcase {
      * @param string $expected The expected result.
      * @covers \filter_shortcodes_process_text
      */
-    public function test_process_text($text, $informant, $expected) {
+    public function test_process_text($text, $informant, $expected): void {
         $this->assertEquals($expected, filter_shortcodes_process_text($text, $informant));
     }
 
@@ -269,7 +269,7 @@ class lib_helpers_test extends \advanced_testcase {
      *
      * @covers \filter_shortcodes_definition_from_data
      */
-    public function test_filter_shortcodes_definition_from_data_invalid_code() {
+    public function test_filter_shortcodes_definition_from_data_invalid_code(): void {
         $this->expectException('invalid_parameter_exception');
         $this->expectExceptionMessage('Invalid parameter value detected');
         filter_shortcodes_definition_from_data('abc:d', []);
@@ -280,7 +280,7 @@ class lib_helpers_test extends \advanced_testcase {
      *
      * @covers \filter_shortcodes_definition_from_data
      */
-    public function test_filter_shortcodes_definition_from_data_invalid_code_too() {
+    public function test_filter_shortcodes_definition_from_data_invalid_code_too(): void {
         $this->expectException('invalid_parameter_exception');
         $this->expectExceptionMessage('Invalid parameter value detected');
         filter_shortcodes_definition_from_data('ab_c', []);
@@ -291,7 +291,7 @@ class lib_helpers_test extends \advanced_testcase {
      *
      * @covers \filter_shortcodes_definition_from_data
      */
-    public function test_filter_shortcodes_definition_from_data_invalid_callback() {
+    public function test_filter_shortcodes_definition_from_data_invalid_callback(): void {
         $this->expectException('coding_exception');
         $this->expectExceptionMessage("The callback for shortcode 'abc' is invalid.");
         filter_shortcodes_definition_from_data('abc', ['callback' => 'donot::exist']);
@@ -302,7 +302,7 @@ class lib_helpers_test extends \advanced_testcase {
      *
      * @covers \filter_shortcodes_definition_from_data
      */
-    public function test_filter_shortcodes_definition_from_data_missing_component() {
+    public function test_filter_shortcodes_definition_from_data_missing_component(): void {
         $this->expectException('coding_exception');
         $this->expectExceptionMessage("A shortcode must belong to a component.");
         filter_shortcodes_definition_from_data('abc', ['callback' => 'intval']);
@@ -313,7 +313,7 @@ class lib_helpers_test extends \advanced_testcase {
      *
      * @covers \filter_shortcodes_definition_from_data
      */
-    public function test_filter_shortcodes_definition_from_data() {
+    public function test_filter_shortcodes_definition_from_data(): void {
         $result = filter_shortcodes_definition_from_data('abc', ['callback' => 'intval', 'component' => 'b']);
         $this->assertEquals('abc', $result->shortcode);
         $this->assertEquals('intval', $result->callback);

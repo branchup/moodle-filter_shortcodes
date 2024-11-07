@@ -32,18 +32,10 @@ use filter_shortcodes\local\registry\plugin_registry;
 
 require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
 
-if (class_exists(\core_filters\text_filter::class)) {
-    /**
-     * Parent class.
-     */
-    abstract class core_text_filter extends \core_filters\text_filter {}
+if (class_exists('\core_filters\text_filter')) {
+    class_alias('\core_filters\text_filter', 'filter_shortcodes_base_text_filter');
 } else {
-    require_once($CFG->libdir . '/filterlib.php');
-
-    /**
-     * Parent class.
-     */
-    abstract class core_text_filter extends \moodle_text_filter {}
+    class_alias('\moodle_text_filter', 'filter_shortcodes_base_text_filter');
 }
 
 /**
@@ -54,7 +46,7 @@ if (class_exists(\core_filters\text_filter::class)) {
  * @author     Frédéric Massart <fred@branchup.tech>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class text_filter extends core_text_filter {
+class text_filter extends \filter_shortcodes_base_text_filter {
 
     /** @var processor The processor. */
     private $processor;
