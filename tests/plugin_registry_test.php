@@ -39,14 +39,14 @@ global $CFG;
  * @author     Frédéric Massart <fred@branchup.tech>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class plugin_registry_test extends \advanced_testcase {
+final class plugin_registry_test extends \advanced_testcase {
 
     /**
      * Get definitions.
      *
      * @covers \filter_shortcodes\local\registry\plugin_registry::get_definitions
      */
-    public function test_get_definitions() {
+    public function test_get_definitions(): void {
         $this->resetAfterTest();
         filter_set_global_state('shortcodes', TEXTFILTER_ON);
 
@@ -66,7 +66,7 @@ class plugin_registry_test extends \advanced_testcase {
      *
      * @covers \filter_shortcodes\local\registry\plugin_registry::get_handler
      */
-    public function test_get_handler() {
+    public function test_get_handler(): void {
         $this->resetAfterTest();
         filter_set_global_state('shortcodes', TEXTFILTER_ON);
 

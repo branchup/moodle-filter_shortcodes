@@ -42,14 +42,14 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @author     Frédéric Massart <fred@branchup.tech>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class standard_processor_test extends \advanced_testcase {
+final class standard_processor_test extends \advanced_testcase {
 
     /**
      * Process.
      *
      * @covers \filter_shortcodes\local\processor\standard_processor::process
      */
-    public function test_process() {
+    public function test_process(): void {
         $this->resetAfterTest();
         $dg = $this->getDataGenerator();
         $u1 = $dg->create_user(['firstname' => 'François', 'lastname' => 'O\'Brian']);
