@@ -33,17 +33,21 @@ use filter_shortcodes\local\registry\plugin_registry;
 require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
 
 if (class_exists(\core_filters\text_filter::class)) {
+    // phpcs:disable Generic.Classes.DuplicateClassName.Found
     /**
      * Parent class.
      */
-    abstract class core_text_filter extends \core_filters\text_filter {}
+    abstract class core_text_filter extends \core_filters\text_filter {
+    }
 } else {
     require_once($CFG->libdir . '/filterlib.php');
 
+    // phpcs:disable Generic.Classes.DuplicateClassName.Found
     /**
      * Parent class.
      */
-    abstract class core_text_filter extends \moodle_text_filter {}
+    abstract class core_text_filter extends \moodle_text_filter {
+    }
 }
 
 /**
