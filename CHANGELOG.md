@@ -1,6 +1,17 @@
 Changelog
 =========
 
+v1.1.1
+------
+
+- Compatibility with Moodle 5.0
+- Minor coding style updates
+
+v1.1.0
+------
+
+- Compatibility with Moodle 4.5
+
 v1.0.6
 ------
 

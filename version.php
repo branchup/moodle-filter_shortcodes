@@ -25,8 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2024090500;
+$plugin->version   = 2025041100;
 $plugin->requires  = 2016052300; // Moodle 3.1.0.
 $plugin->component = 'filter_shortcodes';
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = '1.1.0';
+$plugin->release   = '1.1.1';
