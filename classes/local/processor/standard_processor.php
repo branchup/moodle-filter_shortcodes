@@ -40,7 +40,6 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class standard_processor implements processor {
-
     /** @var env The environment. */
     protected $env;
     /** @var registry The registry. */
@@ -63,7 +62,7 @@ class standard_processor implements processor {
      * @return string
      */
     protected function internal_process($text, $next) {
-        return filter_shortcodes_process_text($text, function($shortcode) use ($next) {
+        return filter_shortcodes_process_text($text, function ($shortcode) use ($next) {
             $handler = $this->registry->get_handler($shortcode);
             if (!$handler) {
                 return;
@@ -71,7 +70,7 @@ class standard_processor implements processor {
             $processor = $handler->processor;
             return (object) [
                 'hascontent' => $handler->wraps,
-                'contentprocessor' => function($args, $content) use ($processor, $shortcode, $next) {
+                'contentprocessor' => function ($args, $content) use ($processor, $shortcode, $next) {
                     // We decorate the handler method to pass through the other needed arguments.
                     return $processor($shortcode, $args, $content, $this->env, $next);
                 },
@@ -91,7 +90,7 @@ class standard_processor implements processor {
         }
 
         $env = $this->env;
-        $result = $this->internal_process($text, function($text) use ($env) {
+        $result = $this->internal_process($text, function ($text) use ($env) {
             $result = $this->process($text);
             $this->set_env($env);
             return $result;
@@ -109,5 +108,4 @@ class standard_processor implements processor {
     public function set_env(stdClass $env) {
         $this->env = $env;
     }
-
 }

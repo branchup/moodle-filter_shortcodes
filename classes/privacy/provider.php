@@ -34,7 +34,6 @@ namespace filter_shortcodes\privacy;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements \core_privacy\local\metadata\null_provider {
-
     use \core_privacy\local\legacy_polyfill;
 
     /**
@@ -45,5 +44,4 @@ class provider implements \core_privacy\local\metadata\null_provider {
     public static function _get_reason() { // @codingStandardsIgnoreLine
         return 'privacy:metadata';
     }
-
 }

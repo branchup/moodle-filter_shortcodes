@@ -23,6 +23,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// phpcs:disable Generic.Classes.DuplicateClassName.Found
+// phpcs:disable PSR1.Classes.ClassDeclaration.MultipleClasses
+
 namespace filter_shortcodes;
 
 defined('MOODLE_INTERNAL') || die();
@@ -32,8 +35,8 @@ use filter_shortcodes\local\registry\plugin_registry;
 
 require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
 
+
 if (class_exists(\core_filters\text_filter::class)) {
-    // phpcs:disable Generic.Classes.DuplicateClassName.Found
     /**
      * Parent class.
      */
@@ -42,7 +45,6 @@ if (class_exists(\core_filters\text_filter::class)) {
 } else {
     require_once($CFG->libdir . '/filterlib.php');
 
-    // phpcs:disable Generic.Classes.DuplicateClassName.Found
     /**
      * Parent class.
      */
@@ -59,7 +61,6 @@ if (class_exists(\core_filters\text_filter::class)) {
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class text_filter extends core_text_filter {
-
     /** @var processor The processor. */
     private $processor;
 
@@ -88,5 +89,4 @@ class text_filter extends core_text_filter {
         }
         return $this->processor;
     }
-
 }

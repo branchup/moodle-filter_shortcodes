@@ -34,7 +34,6 @@ namespace filter_shortcodes;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class shortcodes {
-
     /**
      * Handle shortcodes.
      *
@@ -56,5 +55,4 @@ class shortcodes {
         }
         return $next($content);
     }
-
 }

@@ -43,7 +43,6 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class standard_processor_test extends \advanced_testcase {
-
     /**
      * Process.
      *
@@ -70,7 +69,6 @@ final class standard_processor_test extends \advanced_testcase {
         $expected = 'Hello François O\'Brian, welcome to the @BEST@ SCHOOL ever!';
         $this->assertEquals($expected, $processor->process($content));
     }
-
 }
 
 /**

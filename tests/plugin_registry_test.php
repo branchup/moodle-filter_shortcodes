@@ -40,7 +40,6 @@ global $CFG;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class plugin_registry_test extends \advanced_testcase {
-
     /**
      * Get definitions.
      *
@@ -56,7 +55,7 @@ final class plugin_registry_test extends \advanced_testcase {
         // We do not know about the other plugins that may be installed on the system, so
         // let's just check that we find our own shortcodes.
         $this->assertTrue(count($defs) >= 1);
-        $this->assertNotEmpty(array_filter($defs, function($def) {
+        $this->assertNotEmpty(array_filter($defs, function ($def) {
             return $def->shortcode == 'off' && $def->component == 'filter_shortcodes';
         }));
     }
@@ -74,7 +73,7 @@ final class plugin_registry_test extends \advanced_testcase {
         $handler = $registry->get_handler('off');
         $this->assertTrue($handler->wraps);
 
-        $noop = function($text) {
+        $noop = function ($text) {
             return $text;
         };
         $env = filter_shortcodes_make_env(context_system::instance());
@@ -82,5 +81,4 @@ final class plugin_registry_test extends \advanced_testcase {
         $content = 'is [not] processed';
         $this->assertEquals($content, $processor('off', [], $content, $env, $noop));
     }
-
 }

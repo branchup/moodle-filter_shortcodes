@@ -38,7 +38,6 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class lib_helpers_test extends \advanced_testcase {
-
     /**
      * Parse attributes data provider.
      *
@@ -121,24 +120,24 @@ final class lib_helpers_test extends \advanced_testcase {
      * @return array
      */
     public static function process_text_provider(): array {
-        $noop = function() {
+        $noop = function () {
         };
         $informantsingle = (object) [
             'hascontent' => false,
-            'contentprocessor' => function($attrs, $content) {
+            'contentprocessor' => function ($attrs, $content) {
                 return isset($attrs['text']) ? $attrs['text'] : 'banana';
             },
         ];
         $informantcontent = (object) [
             'hascontent' => true,
-            'contentprocessor' => function($attrs, $content) {
+            'contentprocessor' => function ($attrs, $content) {
                 return strtoupper($content);
             },
         ];
-        $informantmaker = function($nextinformant) {
+        $informantmaker = function ($nextinformant) {
             return (object) [
                 'hascontent' => true,
-                'contentprocessor' => function($attrs, $content) use ($nextinformant) {
+                'contentprocessor' => function ($attrs, $content) use ($nextinformant) {
                     return strtoupper(filter_shortcodes_process_text($content, $nextinformant));
                 },
             ];
@@ -176,7 +175,7 @@ final class lib_helpers_test extends \advanced_testcase {
             ],
             [
                 'Lorem ipsum [dolor] sit amet, [a]consectetur adipisicing[/a] elit.',
-                function($tag) use ($informantsingle, $informantcontent) {
+                function ($tag) use ($informantsingle, $informantcontent) {
                     if ($tag == 'dolor') {
                         return $informantsingle;
                     } else if ($tag == 'a') {
@@ -187,42 +186,42 @@ final class lib_helpers_test extends \advanced_testcase {
             ],
             [
                 'Lorem ipsum [dolor text="abc"] sit amet, consectetur adipisicing elit.',
-                function($tag) use ($informantsingle, $informantcontent) {
+                function ($tag) use ($informantsingle, $informantcontent) {
                     return $informantsingle;
                 },
                 'Lorem ipsum abc sit amet, consectetur adipisicing elit.',
             ],
             [
                 'Lorem ipsum [dolor param="contains ] <-- this and \"this\""] sit amet, consectetur adipisicing elit.',
-                function($tag) use ($informantsingle, $informantcontent) {
+                function ($tag) use ($informantsingle, $informantcontent) {
                     return $informantsingle;
                 },
                 'Lorem ipsum banana sit amet, consectetur adipisicing elit.',
             ],
             [
                 'Lorem ipsum [dolor text="abc"] sit amet[/dolor], consectetur adipisicing elit.',
-                function($tag) use ($informantsingle, $informantcontent) {
+                function ($tag) use ($informantsingle, $informantcontent) {
                     return $informantsingle;
                 },
                 'Lorem ipsum abc sit amet[/dolor], consectetur adipisicing elit.',
             ],
             [
                 'Lorem ipsum [dolor text="abc"] sit amet[/dolor], consectetur adipisicing elit.',
-                function($tag) use ($informantsingle, $informantcontent) {
+                function ($tag) use ($informantsingle, $informantcontent) {
                     return $informantcontent;
                 },
                 'Lorem ipsum  SIT AMET, consectetur adipisicing elit.',
             ],
             [
                 'Lorem ipsum [dolor text="abc"] sit amet[dolor], consectetur adipisicing[/dolor] elit.',
-                function($tag) use ($informantsingle, $informantcontent) {
+                function ($tag) use ($informantsingle, $informantcontent) {
                     return $informantcontent;
                 },
                 'Lorem ipsum  SIT AMET[DOLOR], CONSECTETUR ADIPISICING elit.',
             ],
             [
                 'Lorem [a] ipsum [dolor text="abc"] sit amet[a], consectetur adipisicing elit.',
-                function($tag) use ($informantsingle, $informantcontent) {
+                function ($tag) use ($informantsingle, $informantcontent) {
                     return $tag == 'a' ? $informantsingle : $informantcontent;
                 },
                 'Lorem banana ipsum [dolor text="abc"] sit ametbanana, consectetur adipisicing elit.',
@@ -230,13 +229,13 @@ final class lib_helpers_test extends \advanced_testcase {
             [
                 '[dolor text="Lorem "][upperme][decorate]banana[/decorate][dolor text=" ipsum"][/upperme] ' .
                     'dolor [a][dolor text=" sit amet"]',
-                function($tag) use ($informantsingle, $informantcontent, $informantmaker) {
+                function ($tag) use ($informantsingle, $informantcontent, $informantmaker) {
                     if ($tag == 'upperme') {
-                        return $informantmaker(function($tag) use ($informantsingle) {
+                        return $informantmaker(function ($tag) use ($informantsingle) {
                             if ($tag == 'decorate') {
                                 return (object) [
                                     'hascontent' => true,
-                                    'contentprocessor' => function($args, $content) {
+                                    'contentprocessor' => function ($args, $content) {
                                         return '@' . $content . '@';
                                     },
                                 ];

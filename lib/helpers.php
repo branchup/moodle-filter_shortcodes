@@ -95,7 +95,7 @@ function filter_shortcodes_handler_from_definition(stdClass $definition) {
     $callback = $definition->callback;
     return (object) [
         'wraps' => $definition->wraps,
-        'processor' => function($shortcode, $args, $content, $env, $next) use ($callback) {
+        'processor' => function ($shortcode, $args, $content, $env, $next) use ($callback) {
             return call_user_func($callback, $shortcode, $args, $content, $env, $next);
         },
     ];
@@ -151,25 +151,21 @@ function filter_shortcodes_parse_attributes($text) {
                 $inkey = true;
                 $pos++;
                 continue;
-
             } else if ($char == '=' && $inkey && $key != '') {
                 $inkey = false;
                 $pos++;
                 continue;
-
             } else if ($char == '"') {
                 $inquote = true;
                 $pos++;
                 continue;
             }
-
         } else {
             if ($char == '"' && $pos && core_text::substr($text, $pos - 1, 1) != '\\') {
                 // Detect when we reached the end of a quoted text.
                 $inquote = false;
                 $pos++;
                 continue;
-
             } else if ($char == '\\' && core_text::substr($text, $pos, 2) == '\\"') {
                 // When the quote is being escaped, remove the escaping character.
                 $char = '"';
@@ -232,7 +228,6 @@ function filter_shortcodes_process_text($text, callable $informant) {
 
         // We have a tag and can we handle it?
         if ($tag && is_object($info = $informant($tag))) {
-
             if ($lastcloseself < $pos) {
                 // The tag does not have an end.
                 continue;
@@ -263,7 +258,6 @@ function filter_shortcodes_process_text($text, callable $informant) {
 
                 $attrs .= $char;
                 $pos++;
-
             } while ($pos <= $lastcloseself); // Stop when we know there is no remaining closing tag.
 
             // The tag was never closed and we reached the end, leave.

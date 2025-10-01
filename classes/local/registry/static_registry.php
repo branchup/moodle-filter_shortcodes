@@ -37,7 +37,6 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class static_registry implements registry {
-
     /** @var array Static cache. */
     protected $cache = [];
     /** @var array The definitions arranged per shortcode, supports multiple definitions per shortcode. */
@@ -49,7 +48,7 @@ final class static_registry implements registry {
      * @param array $definitions The definition objects.
      */
     public function __construct(array $definitions) {
-        $this->definitions = array_reduce($definitions, function($carry, $definition) {
+        $this->definitions = array_reduce($definitions, function ($carry, $definition) {
             $tag = $definition->shortcode;
             if (!isset($carry[$tag])) {
                 $carry[$tag] = [];
@@ -89,5 +88,4 @@ final class static_registry implements registry {
         }
         return $this->cache[$shortcode];
     }
-
 }

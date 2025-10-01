@@ -34,7 +34,6 @@ namespace filter_shortcodes\local\processor;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 interface processor {
-
     /**
      * The filtering occurs here.
      *
@@ -42,5 +41,4 @@ interface processor {
      * @return string The resulting text.
      */
     public function process($text);
-
 }

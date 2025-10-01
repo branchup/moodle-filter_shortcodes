@@ -34,7 +34,6 @@ namespace filter_shortcodes\local\registry;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 interface registry {
-
     /**
      * Get the definitions.
      *
@@ -52,5 +51,4 @@ interface registry {
      * @return object|null
      */
     public function get_handler($shortcode);
-
 }

@@ -42,7 +42,6 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class plugin_registry implements registry {
-
     /** @var cache The cache to browse for definitions. */
     protected $cache;
     /** @var registry The static registry. */
@@ -82,7 +81,7 @@ class plugin_registry implements registry {
      * @return array
      */
     protected function fetch_definitions() {
-        $saferead = function($file){
+        $saferead = function ($file) {
             $shortcodes = [];
             include($file);
             return $shortcodes;
@@ -94,7 +93,6 @@ class plugin_registry implements registry {
 
         $types = core_component::get_plugin_types();
         foreach ($types as $plugintype => $typedir) {
-
             $plugins = core_component::get_plugin_list($plugintype);
             foreach ($plugins as $name => $rootdir) {
                 $component = $plugintype . '_' . $name;
@@ -139,5 +137,4 @@ class plugin_registry implements registry {
             $this->registry = new static_registry($definitions);
         }
     }
-
 }

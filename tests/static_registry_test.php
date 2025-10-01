@@ -41,7 +41,6 @@ require_once($CFG->dirroot . '/filter/shortcodes/lib/helpers.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class static_registry_test extends \advanced_testcase {
-
     /**
      * Get definitions.
      *
@@ -73,7 +72,7 @@ final class static_registry_test extends \advanced_testcase {
      * @covers \filter_shortcodes\local\registry\static_registry::get_handler
      */
     public function test_get_handler(): void {
-        $noop = function($text) {
+        $noop = function ($text) {
             return $text;
         };
         $registry = new static_registry([
@@ -112,7 +111,6 @@ final class static_registry_test extends \advanced_testcase {
         $this->assertFalse($handler->wraps);
         $this->assertEquals('one', $processor('ghi', [], null, (object) [], $noop));
     }
-
 }
 
 /**
