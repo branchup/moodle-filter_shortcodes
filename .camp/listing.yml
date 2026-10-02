@@ -1,0 +1,34 @@
+# Schema: https://camp-registry.org/schema/listing.schema.json
+name: Shortcodes
+summary: Embed and modify Moodle content using shortcodes provided by other plugins.
+
+description: |
+  Shortcodes lets teachers and content creators embed or modify content throughout Moodle using simple tags in square brackets. The shortcodes are provided by other Moodle plugins, with Shortcodes acting as a shared text filter that gives users a consistent way to use their features.
+
+  Install Shortcodes alongside a compatible plugin, then paste that plugin's shortcodes into your pages, activity descriptions or other content where Moodle text filters apply. The available shortcodes and what they display depend on the plugins installed on your site.
+
+  ## Compatible plugins
+
+  - [Level Up XP](https://www.levelup.plus/xp/)
+  - [Level Up Quest](https://www.levelup.plus/quest/)
+  - [Stash](https://marketplace.moodle.com/plugins/block_stash)
+
+  Does your plugin support Shortcodes? [Let us know](https://github.com/branchup/moodle-filter_shortcodes/issues).
+
+  ## For developers
+
+  Add shortcode support to your plugin without creating a separate text filter. Register shortcodes in your plugin's `db/shortcodes.php` and provide a callback to render their content. The API supports attributes, shortcodes that wrap content, and nested shortcodes.
+
+  See the [developer documentation](https://github.com/branchup/moodle-filter_shortcodes#how-to-for-developers) to get started.
+
+labels:
+  - fully-free
+
+screenshots:
+  - path: .camp/screenshots/before-after.png
+    caption: Turn simple shortcode tags into dynamic content.
+
+links:
+  docs: https://github.com/branchup/moodle-filter_shortcodes#readme
+  issues: https://github.com/branchup/moodle-filter_shortcodes/issues
+  changelog: https://github.com/branchup/moodle-filter_shortcodes/blob/HEAD/CHANGELOG.md
