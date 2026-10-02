@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.1.4
+------
+
+- Compatibility with Moodle 5.3
+
 v1.1.3
 ------
 
