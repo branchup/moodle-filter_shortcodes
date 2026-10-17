@@ -51,7 +51,7 @@ class shortcodes {
         } else if ($shortcode === 'firstname') {
             return s($USER->firstname);
         } else if ($shortcode === 'fullname') {
-            return fullname($USER);
+            return s(fullname($USER));
         }
         return $next($content);
     }
