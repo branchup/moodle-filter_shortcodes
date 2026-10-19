@@ -192,7 +192,7 @@ final class lib_helpers_test extends \advanced_testcase {
                 'Lorem ipsum abc sit amet, consectetur adipisicing elit.',
             ],
             [
-                'Lorem ipsum [dolor param="contains ] <-- this and \"this\""] sit amet, consectetur adipisicing elit.',
+                'Lorem ipsum [dolor param="contains ] <3 this and \"this\""] sit amet, consectetur adipisicing elit.',
                 function ($tag) use ($informantsingle, $informantcontent) {
                     return $informantsingle;
                 },
