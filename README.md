@@ -22,6 +22,7 @@ Enables users to inject content using shortcodes. The shortcodes are provided by
     - [Shortcode definition](#shortcode-definition)
     - [Callback arguments](#callback-arguments)
   - [Limitations](#limitations)
+    - [Use in HTML](#use-in-html)
     - [Backup and restore](#backup-and-restore)
     - [Name conflicts](#name-conflicts)
     - [Nested shortcodes](#nested-shortcodes)
@@ -161,7 +162,7 @@ class shortcodes {
 
     public static function useremail() {
         global $USER;
-        return $USER->email;
+        return s($USER->email);
     }
 
 }
@@ -170,6 +171,8 @@ class shortcodes {
 That's it, your shortcode is now functional. Note that you will need to increase the version number of your plugin in order to force a cache reset, else the new shortcode will not detected. When you are developing, you can simply purge caches between your attempts.
 
 For simplicity we omitted the arguments passed to the method `useremail`, more information in [Callback arguments](#callback-arguments).
+
+Callback output is treated as HTML and is not escaped as a whole. Each shortcode is responsible for escaping untrusted data, as the example does with `s()`. Returning a literal closing tag can close an enclosing element. The parser only escapes literal quotes when inserting output into an allowed, quoted HTML attribute.
 
 Developer documentation
 -----------------------
@@ -270,6 +273,17 @@ public static function mycallback($shortcode, $args, $content, $env, $next) {
 
 Limitations
 -----------
+
+### Use in HTML
+
+Shortcodes are intended for page content, such as `<p>[firstname]</p>`. Their use within HTML has a few limitations:
+
+- Within HTML attributes, shortcodes are supported only in quoted `alt`, `title` and `aria-label` values, such as `<span title="[fullname]">`.
+- In shortcode arguments, use `&lt;` and `&gt;` for literal angle brackets. Comparison operators can be used directly before a digit, as in `>2` or `<=3`.
+- Shortcodes cannot be used to add HTML attributes, as in `<div [example]>`.
+- Shortcodes are not processed inside certain elements, including `script`, `style` and `textarea`.
+
+These limitations are intentional. Shortcodes in unsupported locations are left unchanged.
 
 ### Backup and restore
 
