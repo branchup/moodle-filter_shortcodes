@@ -1,0 +1,13 @@
+name: Publish release to CAMP
+
+# Run manually against an existing release tag, not a branch.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    uses: camp-registry/camp-workflows/.github/workflows/release.yml@v1
