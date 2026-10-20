@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.2.0
+------
+
+- Improved shortcode processing in HTML content
+
 v1.1.4
 ------
 
